@@ -1,54 +1,45 @@
-# 🤖 Donna – Your AI-Powered Daily Briefing Assistant
+# 🤖 AI Productivity Agent – Built with n8n
 
-This project automates the generation and delivery of a **morning briefing email** using [n8n](https://n8n.io/) and [OpenAI's Assistants API](https://platform.openai.com/docs/assistants/overview). It fetches your **calendar events**, **weather updates**, and **top news headlines**, then summarizes them with a dash of wit – just like *Donna* from *Suits*.
-
----
-
-## 🧠 Features
-
-- 📅 Fetches upcoming **Google Calendar** events
-- 🌤 Pulls live **weather** data via API
-- 📰 Extracts **top 3 headlines** using NewsAPI
-- 🤖 Summarizes all info using **OpenAI GPT-3.5 Turbo**
-- 💌 Sends an email with a concise, stylish morning briefing
-- ✨ Ends every email with a **Donna-style witty remark**
+This project is a personal AI agent that automates my daily workflow using [n8n](https://n8n.io/). It intelligently pulls data from my calendar, Google Sheets, and weather API, scores my task productivity, and sends me a personalized daily briefing via email — just like Donna from Suits would. 💼
 
 ---
 
-## ⚙️ Tools & Services
+## 🚀 Features
 
-| Tool         | Purpose                                  |
-|--------------|-------------------------------------------|
-| `n8n`        | Workflow automation engine                |
-| `OpenAI API` | Text summarization via GPT-3.5 Assistant  |
-| `Google Calendar` | Event retrieval                      |
-| `NewsAPI`    | Top news headlines                        |
-| `Weather API`| Current weather info                      |
-| `SMTP / Gmail` | Email delivery                          |
+- ✅ Reads daily task list from Google Sheets
+- 📅 Fetches today's events from Google Calendar
+- 🌤️ Gets the weather forecast from OpenWeather API
+- 📊 Calculates a daily productivity score based on task completion and priority
+- 💌 Sends a motivating and structured daily summary to my Gmail
+- 🧠 (Optional) Maintains session memory to personalize future updates
 
 ---
 
-## 🛠 Workflow Overview
+## 🔧 Tools & Integrations Used
 
-```text
-┌────────────┐
-│ Cron Start │ ─▶ Triggers Daily at 7 AM
-└────┬───────┘
-     ▼
-┌──────────────┐
-│ Google Calendar │ ─┐
-└──────────────┘   │
-┌─────────────┐    ├─▶ Merge Data
-│ Weather API │    │
-└─────────────┘    │
-┌────────────┐     │
-│ News API   │ ────┘
-└────────────┘
-     ▼
-┌────────────────────┐
-│ OpenAI Assistant   │ → Generates summary (as Donna)
-└────────────────────┘
-     ▼
-┌────────────┐
-│ Send Email │ → Sends formatted briefing to user
-└────────────┘
+| Tool / Node               | Purpose                                      |
+|---------------------------|----------------------------------------------|
+| **Google Sheets**         | Stores task list with priority and status    |
+| **Google Calendar**       | Fetches event schedule                       |
+| **OpenWeather API**       | Provides local weather forecast              |
+| **Custom Code Node**      | Calculates task score and formats output     |
+| **Gmail**                 | Sends daily summary email                    |
+| **Simple Memory (optional)** | Stores session data for continuity     |
+| **OpenAI Chat (Agent)**   | Powers the AI-generated daily summary        |
+| **Schedule Trigger**      | Triggers the workflow every morning          |
+
+---
+
+## 🧠 Sample Workflow Summary
+
+1. Triggered every day at 8 AM.
+2. Pulls tasks from `Daily_Planner` sheet.
+3. Reads events from Google Calendar.
+4. Checks weather for the day using your zip code or city.
+5. Scores completed vs missed tasks (High = 3 pts, Med = 2 pts, Low = 1 pt).
+6. Formats everything into a professional & motivating email.
+7. Sends it to my Gmail inbox.
+
+---
+
+
